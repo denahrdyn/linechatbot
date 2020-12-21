@@ -25,7 +25,7 @@ $configs = [
 $app = new Slim\App($configs);
 
 $app->get('/', function($req, $res) {
-    echo 'Hello World!';
+    return 'Hello World!';
 });
 
 // buat route untuk webhook
