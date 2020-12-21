@@ -1,5 +1,5 @@
 {
-    "name": "dicoding/line-bot-dicoding",
+    "name": "dicoding/line-bot-php",
     "description": "Simple line bot using php slim framework",
     "type": "project",
     "require": {
@@ -13,6 +13,5 @@
             "name": "Dena Herdiyani",
             "email": "denaherdiyani@gmail.com"
         }
-    ],
-    "minimum-stability": "stable"
+    ]
 }

@@ -2,12 +2,12 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use \LINEBot;
-use \LINEBot\HTTPClient\CurlHTTPClient;
-use \LINEBot\MessageBuilder\MultiMessageBuilder;
-use \LINEBot\MessageBuilder\TextMessageBuilder;
-use \LINEBot\MessageBuilder\StickerMessageBuilder;
-use \LINEBot\SignatureValidator as SignatureValidator;
+use \LINE\LINEBot;
+use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use \LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
+use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 
 $pass_signature = true;
 

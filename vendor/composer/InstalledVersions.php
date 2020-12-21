@@ -24,24 +24,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
-    'name' => 'dicoding/line-bot-dicoding',
+    'reference' => 'd402d08041674d10149f09df7e0957bce1f75a7f',
+    'name' => 'dicoding/line-bot-php',
   ),
   'versions' => 
   array (
-    'dicoding/line-bot-dicoding' => 
+    'dicoding/line-bot-php' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'd402d08041674d10149f09df7e0957bce1f75a7f',
     ),
     'guzzlehttp/guzzle' => 
     array (
