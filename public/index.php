@@ -1,6 +1,10 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
 use \LINE\LINEBot;
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -19,21 +23,21 @@ $channel_secret = "782cac53e7799cd2bb91e7f579e2e51f";
 $httpClient = new CurlHTTPClient($channel_access_token);
 $bot = new LINEBot($httpClient, ['channelSecret' => $channel_secret]);
 
-$configs = [
-    'settings' => ['displayErrorDetails' => true],
-];
-$app = new Slim\App($configs);
+$app = AppFactory::create();
+$app->setBasePath("/public");
 
-$app->get('/', function($req, $res) {
-    echo 'Hello World!';
+$app->get('/', function (Request $request, Response $response, $args)
+{
+    $response->getBody()->write("Welcome at Dicoding Line ChatBot");
+    return $response;
 });
 
 // buat route untuk webhook
-$app->post('/webhook', function ($req, $res) use ($bot, $httpClient, $pass_signature) 
+$app->post('/webhook', function (Request $request, Response $response) use ($channel_secret, $bot, $httpClient, $pass_signature) 
 {
     // get request body and line signature header
-    $body = file_get_contents('php://input');
-    $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
+    $body = $request->getBody();
+    $signature = $request->getHeaderLine('HTTP_X_LINE_SIGNATURE');
 
     // log body and signature
     file_put_contents('php://stderr', 'Body: '.$body);
@@ -43,13 +47,13 @@ $app->post('/webhook', function ($req, $res) use ($bot, $httpClient, $pass_signa
         // is LINE_SIGNATURE exists in request header?
         if (empty($signature))
         {
-            return $res->withStatus(400, 'Signature not set');
+            return $response->withStatus(400, 'Signature not set');
         }
 
         // is this request comes from LINE?
-        if (! SignatureValidator::validatorSignature($body, $channel_secret, $signature))
+        if (!SignatureValidator::validatorSignature($body, $channel_secret, $signature))
         {
-            return $res->withStatus(400, 'Invalid signature');
+            return $response->withStatus(400, 'Invalid signature');
         }
     }
 
