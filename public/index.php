@@ -65,7 +65,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
         {
             $onboarding = new TextMessageBuilder('Ketik "Cafe" untuk melakukan pencarian Cafe Shop Terfavoritemu di Bandung.');
             $result = $bot->replyMessage($event['replyToken'], $onboarding);
-            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+            return $result->getHTTPStatus() . ' ' . $result->getRawBody();
         } 
     
         $message = strtolower($event['message']['text']);
@@ -106,7 +106,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
 
             $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Cafe Hits Bandung', $carouselTemplateBuilder);
             $result = $bot->replyMessage($event['replyToken'], $templateMessage);
-            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+            return $result->getHTTPStatus() . ' ' . $result->getRawBody();
         
         } 
         
@@ -115,7 +115,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
         {
             $textMessageBuilder = new TextMessageBuilder('Tidak ada hasil ditemukan!');
             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+            return $result->getHTTPStatus() . ' ' . $result->getRawBody();
         }
     }
 });
