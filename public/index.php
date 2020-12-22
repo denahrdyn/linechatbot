@@ -126,4 +126,12 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
     }
 });
 
+$app->get('/profile/{userId}', function($request, $response) use ($bot)
+{
+    $route = $request->getAttribute('route');
+    $userId = $route->getArgument('userId');
+    $result = $bot->getProfile($userId);
+
+    return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+});
 $app->run();
