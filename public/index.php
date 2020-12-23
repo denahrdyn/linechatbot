@@ -61,14 +61,12 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
     foreach ($data['events'] as $event)
     {
         $message = strtolower($event['message']['text']);
-        if ($message == 'Halo')
+        if ($message == 'halo')
         {
             $onboarding = new TextMessageBuilder('Ketik "Cafe" untuk melakukan pencarian Cafe Shop Terfavoritemu di Bandung.');
             $result = $bot->replyMessage($event['replyToken'], $onboarding);
             return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-        } 
-    
-        elseif($message == 'Cafe')
+        } elseif($message == 'cafe')
         {
             $carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
                 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumTemplateBuilder("Jardin Cafe", "Address: Jl. Cimanuk No.1A, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115","https://i.imgur.com/aqtehou.jpeg",[
@@ -107,9 +105,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
             $result = $bot->replyMessage($event['replyToken'], $templateMessage);
             return $result->getHTTPStatus() . ' ' . $result->getRawBody();
         
-        } 
-        
-        elseif ($message != '')
+        }  else 
         {
             $textMessageBuilder = new TextMessageBuilder('Tidak ada hasil ditemukan!');
             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
