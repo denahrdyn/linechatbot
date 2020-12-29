@@ -11,9 +11,9 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
-use \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
-use \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
-use \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+//use \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
+//use \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
+//use \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 
 $pass_signature = true;
