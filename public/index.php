@@ -43,6 +43,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
     $signature = $request->getHeaderLine('HTTP_X_LINE_SIGNATURE');
 
     // log body and signature
+    file_put_contents('php://stderr', 'Body: '.$body);
     file_put_contents('php://stderr', 'Result: '.$result->getRawBody());
 
     if($pass_signature === false)
